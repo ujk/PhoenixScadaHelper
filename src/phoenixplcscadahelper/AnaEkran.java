@@ -37,6 +37,7 @@ public class AnaEkran extends javax.swing.JFrame {
     int modbusInNr = 1000;      //dijital girişlerin başladığı modbus adresi
     int modbusOutNr = 0;        //dijital çıkışların başladığı modbus adresi
     int modbusAnalogInNr = 2000;      //analog girişlerin başladığı modbus adresi
+    int modbusAnalogOutNr = 2100;      //analog çıkışların başladığı modbus adresi
     String opcName = "";        //Visu değişkenleri için OPC adı
     HSSFWorkbook esaWb;         //ESA tag import için xls dosyası
     int esaRowNr;               //ESA tag dosyası satır no
@@ -120,6 +121,15 @@ public class AnaEkran extends javax.swing.JFrame {
         plcAnalogCikislarButton = new javax.swing.JButton();
         jScrollPane13 = new javax.swing.JScrollPane();
         cikislarAnalogTextArea = new javax.swing.JTextArea();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        plcAnalogInitmbInButton = new javax.swing.JButton();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        initAnalogMbGirislerTextArea = new javax.swing.JTextArea();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane15 = new javax.swing.JScrollPane();
+        initAnalogMbCikislarTextArea = new javax.swing.JTextArea();
+        plcAnalogInitmbOutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -198,7 +208,7 @@ public class AnaEkran extends javax.swing.JFrame {
                                 .addGap(186, 186, 186)
                                 .addComponent(plcGirislerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
@@ -375,7 +385,7 @@ public class AnaEkran extends javax.swing.JFrame {
                                 .addComponent(opcNameLabel)
                                 .addGap(52, 52, 52)
                                 .addComponent(visuOpcAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
                                 .addComponent(visuOpcLineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane6))
                         .addGap(18, 18, 18)
@@ -449,7 +459,7 @@ public class AnaEkran extends javax.swing.JFrame {
                     .addComponent(jScrollPane9)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, Short.MAX_VALUE)
                         .addComponent(esaScriptCopyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -539,7 +549,7 @@ public class AnaEkran extends javax.swing.JFrame {
                                 .addGap(186, 186, 186)
                                 .addComponent(plcAnalogGirislerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel10)
@@ -575,6 +585,71 @@ public class AnaEkran extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Analog PLC", jPanel5);
+
+        jLabel11.setText("Analog girişler için INITMB dosyasına");
+
+        plcAnalogInitmbInButton.setText("Panoya Kopyala");
+        plcAnalogInitmbInButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plcAnalogInitmbInButtonActionPerformed(evt);
+            }
+        });
+
+        initAnalogMbGirislerTextArea.setColumns(20);
+        initAnalogMbGirislerTextArea.setRows(5);
+        jScrollPane14.setViewportView(initAnalogMbGirislerTextArea);
+
+        jLabel12.setText("Analog çıkışlar için INITMB dosyasına");
+
+        initAnalogMbCikislarTextArea.setColumns(20);
+        initAnalogMbCikislarTextArea.setRows(5);
+        jScrollPane15.setViewportView(initAnalogMbCikislarTextArea);
+
+        plcAnalogInitmbOutButton.setText("Panoya Kopyala");
+        plcAnalogInitmbOutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plcAnalogInitmbOutButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(153, 153, 153)
+                        .addComponent(plcAnalogInitmbInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane14))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addGap(153, 153, 153)
+                        .addComponent(plcAnalogInitmbOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane15))
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(plcAnalogInitmbInButton)
+                    .addComponent(jLabel12)
+                    .addComponent(plcAnalogInitmbOutButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+                    .addComponent(jScrollPane15))
+                .addContainerGap(254, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("MBAnalogPLC", jPanel6);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -807,6 +882,22 @@ public class AnaEkran extends javax.swing.JFrame {
         clipboard.setContents(selec, selec);
     }//GEN-LAST:event_plcAnalogCikislarButtonActionPerformed
 
+    private void plcAnalogInitmbInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plcAnalogInitmbInButtonActionPerformed
+        // TODO add your handling code here:
+        String get = initAnalogMbGirislerTextArea.getText();
+        StringSelection selec= new StringSelection(get);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(selec, selec);
+    }//GEN-LAST:event_plcAnalogInitmbInButtonActionPerformed
+
+    private void plcAnalogInitmbOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plcAnalogInitmbOutButtonActionPerformed
+        // TODO add your handling code here:
+        String get = initAnalogMbCikislarTextArea.getText();
+        StringSelection selec= new StringSelection(get);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(selec, selec);
+    }//GEN-LAST:event_plcAnalogInitmbOutButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -852,11 +943,15 @@ public class AnaEkran extends javax.swing.JFrame {
     private javax.swing.JTextArea esaScriptTextArea;
     private javax.swing.JTextArea girislerAnalogTextArea;
     private javax.swing.JTextArea girislerTextArea;
+    private javax.swing.JTextArea initAnalogMbCikislarTextArea;
+    private javax.swing.JTextArea initAnalogMbGirislerTextArea;
     private javax.swing.JTextArea initMbCikislarTextArea;
     private javax.swing.JTextArea initMbGirislerTextArea;
     private javax.swing.JButton jButton11;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -870,11 +965,14 @@ public class AnaEkran extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
+    private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -890,6 +988,8 @@ public class AnaEkran extends javax.swing.JFrame {
     private javax.swing.JButton plcAnalogGlobalButton;
     private javax.swing.JLabel plcAnalogGlobalLabel;
     private javax.swing.JTextArea plcAnalogGlobalTextArea;
+    private javax.swing.JButton plcAnalogInitmbInButton;
+    private javax.swing.JButton plcAnalogInitmbOutButton;
     private javax.swing.JButton plcCikislarButton;
     private javax.swing.JButton plcGirislerButton;
     private javax.swing.JButton plcGlobalButton;
@@ -1267,11 +1367,11 @@ public class AnaEkran extends javax.swing.JFrame {
             analogTagCount++;
             plcAnalogGlobalTextArea.append(tagName + "_MAN\tBOOL\tVAR_GLOBAL\t" + 
                     tec(tagComment) + " manual mod\t\t\t0\t0\t1\t0\t0\t0\t\t0\t0\t\t\t\t\t0\t\n");
-    /*        
+            
             //modbus plc kısmı
-            initMbGirislerTextArea.append("if MODDATA[" + modbusInNr + "] <> MODDATA2[" + 
-                    modbusInNr + "] then " + tagName + "W := MODDATA[" + modbusInNr + 
-                    "]; else MODDATA[" + modbusInNr + "] := " + tagName + "W; end_if;\n"); */
+            initAnalogMbGirislerTextArea.append("if MODDATA[" + (modbusAnalogInNr+1000) + "] <> MODDATA2[" + 
+                    (modbusAnalogInNr+1000) + "] then " + tagName + "_MAN := MODDATA[" + (modbusAnalogInNr+1000) + 
+                    "].X0 ; else MODDATA[" + (modbusAnalogInNr+1000) + "].X0 := " + tagName + "_MAN; end_if;\n"); 
         }
         plcAnalogGlobalLabel.setText("Analog Global Değişkenler " + analogTagCount + " Adet");
         
@@ -1280,7 +1380,7 @@ public class AnaEkran extends javax.swing.JFrame {
         if (tagName.equals("YEDEK")) {
         } else {
             girislerAnalogTextArea.append("(* " + tagIO + " - " + tagName 
-                    + " - " + tagComment + " *)\n");
+                    + " - " + tec(tagComment) + " *)\n");
             girislerAnalogTextArea.append("ANIN_FB_1(ANALOG_INP := " + tagIO 
                     + ",ANL_MIN:=word#0,ANL_MAX:=word#30000,SCL_MIN:=0.0,\n" + 
                     "          SCL_MAX:=100.0,MANUAL:=" + tagName + "_MAN,YVAL:=" + 
@@ -1339,7 +1439,61 @@ public class AnaEkran extends javax.swing.JFrame {
     }
 
     private void analogOutput(HSSFRow row) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        // Global değişken tanımları
+        String tagName = row.getCell(1).toString();
+        String tagComment = row.getCell(2).toString();
+        String tagIO = row.getCell(3).toString();
+        analogTagCount++;
+        if (analogTagCount == 1) {
+            String header = "(*     #     #    #     #     #        ###      ###    *)\n" 
+                          + "(*    ###    ##   #    ###    #       #   #    #   #   *)\n"
+                          + "(*   #   #   # #  #   #   #   #      #     #  #        *)\n"
+                          + "(*   #   #   #  # #   #   #   #      #     #  #  ###   *)\n"
+                          + "(*  #######  #   ##  #######  #       #   #    #   #   *)\n"
+                          + "(*  #     #  #    #  #     #  #####    ###      ###    *)\n\n\n\n";
+            girislerAnalogTextArea.append(header);
+            cikislarAnalogTextArea.append(header);
+        }
+        //IO noktası için
+        plcAnalogGlobalTextArea.append(tagIO + "\tWORD\tVAR_GLOBAL\t" + 
+                tagName + "\t\t\t0\t0\t0\t0\t0\t0\t\t0\t0\t\t\t\t\t0\t\n");
+        //diğer plc globaller
+        if (tagName.equals("YEDEK")) {
+        } else {
+            analogTagCount++;
+            plcAnalogGlobalTextArea.append(tagName + "_YVAL\tREAL\tVAR_GLOBAL\t" + 
+                    tec(tagComment) + " manual degeri\t\t\t0\t0\t1\t0\t0\t0\t\t0\t0\t\t\t\t\t0\t\n");
+            analogTagCount++;
+            plcAnalogGlobalTextArea.append(tagName + "\tREAL\tVAR_GLOBAL\t" + 
+                    tec(tagComment) + "\t\t\t0\t0\t1\t0\t0\t0\t\t0\t0\t\t\t\t\t0\t\n");
+            analogTagCount++;
+            plcAnalogGlobalTextArea.append(tagName + "_MAN\tBOOL\tVAR_GLOBAL\t" + 
+                    tec(tagComment) + " manual mod\t\t\t0\t0\t1\t0\t0\t0\t\t0\t0\t\t\t\t\t0\t\n");
+            
+            //modbus plc kısmı
+            initAnalogMbCikislarTextArea.append("if MODDATA[" + (modbusAnalogOutNr+1000) + "] <> MODDATA2[" + 
+                    (modbusAnalogOutNr+1000) + "] then " + tagName + "_MAN := MODDATA[" + (modbusAnalogOutNr+1000) + 
+                    "].X0 ; else MODDATA[" + (modbusAnalogOutNr+1000) + "].X0 := " + tagName + "_MAN; end_if;\n"); 
+        }
+        plcAnalogGlobalLabel.setText("Analog Global Değişkenler " + analogTagCount + " Adet");
+        
+        
+        //CIKISLAR stl dosyası içeriği
+        if (tagName.equals("YEDEK")) {
+        } else {
+            cikislarAnalogTextArea.append("(* " + tagIO + " - " + tagName 
+                    + " - " + tec(tagComment) + " *)\n");
+            cikislarAnalogTextArea.append("ANOUT_FB_1(ANL_MIN:=word#0,ANL_MAX:=word#30000,SCL_MIN:=0.0,\n" + 
+                    "   SCL_MAX:=100.0,MANUAL:=" + tagName + "_MAN,YVAL:=" + tagName + 
+                    "_YVAL,SCL_INP:=" + tagName + ");\n");
+            cikislarAnalogTextArea.append(tagIO + " := ANOUT_FB_1.ANL_OUT;\n\n");
+            cikislarAnalogTextArea.append("TEMPDW := REAL_TO_DWORD(" + tagName + " * 10.0);\n");
+            cikislarAnalogTextArea.append("MODDATA[" + (modbusAnalogOutNr+1) + "] := DWORD_TO_WORD(TEMPDW);\n");
+            cikislarAnalogTextArea.append("MODDATA[" + modbusAnalogOutNr + "] := DWORD_TO_WORD(SHR(TEMPDW,16));\n\n\n\n");
+        }
+
+        modbusAnalogOutNr += 2;
     }
 
     //translate english chars - türkçe olanları plc için ingilizceye çevir
