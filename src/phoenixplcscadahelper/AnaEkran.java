@@ -41,6 +41,8 @@ public class AnaEkran extends javax.swing.JFrame {
     String opcName = "";        //Visu değişkenleri için OPC adı
     HSSFWorkbook esaWb;         //ESA tag import için xls dosyası
     int esaRowNr;               //ESA tag dosyası satır no
+    HSSFWorkbook esaAnalogWb;         //ESA analog tag import için xls dosyası
+    int esaAnalogRowNr;               //ESA analog tag dosyası satır no
     HSSFWorkbook esaAWb;         //ESA alarm import için xls dosyası
     int esaARowNr;               //ESA alarm dosyası satır no
     String modbusMasterName = "";        //Modbus master adı
@@ -108,6 +110,10 @@ public class AnaEkran extends javax.swing.JFrame {
         jScrollPane10 = new javax.swing.JScrollPane();
         esaAlarmScriptTextArea = new javax.swing.JTextArea();
         esaAlarmScriptCopyButton = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        esaAnalogScriptCopyButton = new javax.swing.JButton();
+        jScrollPane18 = new javax.swing.JScrollPane();
+        esaAnalogScriptTextArea = new javax.swing.JTextArea();
         jPanel5 = new javax.swing.JPanel();
         plcAnalogGlobalLabel = new javax.swing.JLabel();
         plcAnalogGlobalButton = new javax.swing.JButton();
@@ -130,6 +136,17 @@ public class AnaEkran extends javax.swing.JFrame {
         jScrollPane15 = new javax.swing.JScrollPane();
         initAnalogMbCikislarTextArea = new javax.swing.JTextArea();
         plcAnalogInitmbOutButton = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        opcAnalogNameLabel = new javax.swing.JLabel();
+        visuAnalogOpcAllButton = new javax.swing.JButton();
+        visuAnalogOpcLineButton = new javax.swing.JButton();
+        jScrollPane16 = new javax.swing.JScrollPane();
+        visuAnalogOpcTextArea = new javax.swing.JTextArea();
+        jLabel13 = new javax.swing.JLabel();
+        visuAnalogVarAllButton = new javax.swing.JButton();
+        visuAnalogVarLineButton = new javax.swing.JButton();
+        jScrollPane17 = new javax.swing.JScrollPane();
+        visuAnalogVarTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -423,7 +440,7 @@ public class AnaEkran extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Visu", jPanel3);
 
-        jLabel7.setText("Manual Kontrol Scriptleri");
+        jLabel7.setText("Dijitallerin Manual Kontrol Scriptleri");
 
         esaScriptTextArea.setColumns(20);
         esaScriptTextArea.setRows(5);
@@ -449,25 +466,44 @@ public class AnaEkran extends javax.swing.JFrame {
             }
         });
 
+        jLabel14.setText("Analogların Manual Kontrol Scriptleri");
+
+        esaAnalogScriptCopyButton.setText("Hepsini Kopyala");
+        esaAnalogScriptCopyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                esaAnalogScriptCopyButtonActionPerformed(evt);
+            }
+        });
+
+        esaAnalogScriptTextArea.setColumns(20);
+        esaAnalogScriptTextArea.setRows(5);
+        jScrollPane18.setViewportView(esaAnalogScriptTextArea);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane9)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane18)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(esaAnalogScriptCopyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
                         .addComponent(esaScriptCopyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
                         .addComponent(esaAlarmScriptCopyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane10))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -479,10 +515,17 @@ public class AnaEkran extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(esaAlarmScriptCopyButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(esaAnalogScriptCopyButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane18, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE))
                     .addComponent(jScrollPane10))
-                .addContainerGap(336, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("ESA", jPanel4);
@@ -651,6 +694,97 @@ public class AnaEkran extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("MBAnalogPLC", jPanel6);
 
+        opcAnalogNameLabel.setText("OPC Adı = x");
+
+        visuAnalogOpcAllButton.setText("Hepsini Panoya Kopyala");
+        visuAnalogOpcAllButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visuAnalogOpcAllButtonActionPerformed(evt);
+            }
+        });
+
+        visuAnalogOpcLineButton.setText("Satırı Panoya Kopyala");
+        visuAnalogOpcLineButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visuAnalogOpcLineButtonActionPerformed(evt);
+            }
+        });
+
+        visuAnalogOpcTextArea.setColumns(20);
+        visuAnalogOpcTextArea.setRows(5);
+        jScrollPane16.setViewportView(visuAnalogOpcTextArea);
+
+        jLabel13.setText("Visu Değişkenleri");
+
+        visuAnalogVarAllButton.setText("Hepsini Panoya Kopyala");
+        visuAnalogVarAllButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visuAnalogVarAllButtonActionPerformed(evt);
+            }
+        });
+
+        visuAnalogVarLineButton.setText("Satırı Panoya Kopyala");
+        visuAnalogVarLineButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visuAnalogVarLineButtonActionPerformed(evt);
+            }
+        });
+
+        visuAnalogVarTextArea.setColumns(20);
+        visuAnalogVarTextArea.setRows(5);
+        jScrollPane17.setViewportView(visuAnalogVarTextArea);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1008, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane17)
+                        .addGroup(jPanel7Layout.createSequentialGroup()
+                            .addComponent(jLabel13)
+                            .addGap(58, 58, 58)
+                            .addComponent(visuAnalogVarAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(126, 126, 126)
+                            .addComponent(visuAnalogVarLineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                            .addComponent(opcAnalogNameLabel)
+                            .addGap(52, 52, 52)
+                            .addComponent(visuAnalogOpcAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                            .addComponent(visuAnalogOpcLineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(355, 355, 355))
+                        .addComponent(jScrollPane16))
+                    .addContainerGap()))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 550, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(visuAnalogOpcAllButton)
+                        .addComponent(opcAnalogNameLabel)
+                        .addComponent(visuAnalogOpcLineButton))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel13)
+                        .addComponent(visuAnalogVarAllButton)
+                        .addComponent(visuAnalogVarLineButton))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jScrollPane17, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+
+        jTabbedPane1.addTab("Analog Visu", jPanel7);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -678,7 +812,6 @@ public class AnaEkran extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void dosyaSecButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dosyaSecButtonActionPerformed
-        // TODO add your handling code here:
         opcName = getOpcName();
         modbusMasterName = getModbusName();
         opcNameLabel.setText("OPC Adı = " + opcName);
@@ -713,6 +846,10 @@ public class AnaEkran extends javax.swing.JFrame {
                 esaAWb = new HSSFWorkbook();
                 fillEsaAWb();
                 
+                // esa analog tag dosyası
+                esaAnalogWb = new HSSFWorkbook();
+                fillEsaAnalogWb();
+                
                 for(int i=0; i<maxRowNr; i++){
                     
                     if (sheet.getRow(i) == null){
@@ -740,6 +877,9 @@ public class AnaEkran extends javax.swing.JFrame {
                 FileOutputStream fileAOut = new FileOutputStream(xlsFile.getParent() + "\\esaAlarms.xls");
                 esaAWb.write(fileAOut);
                 fileAOut.close();
+                FileOutputStream fileAnalogOut = new FileOutputStream(xlsFile.getParent() + "\\esaAnalogTag.xls");
+                esaAnalogWb.write(fileAnalogOut);
+                fileAnalogOut.close();
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(AnaEkran.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
@@ -749,7 +889,6 @@ public class AnaEkran extends javax.swing.JFrame {
     }//GEN-LAST:event_dosyaSecButtonActionPerformed
 
     private void plcGlobalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plcGlobalButtonActionPerformed
-        // TODO add your handling code here:
         String get = plcGlobalTextArea.getText();
         StringSelection selec= new StringSelection(get);
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -757,7 +896,6 @@ public class AnaEkran extends javax.swing.JFrame {
     }//GEN-LAST:event_plcGlobalButtonActionPerformed
 
     private void plcGirislerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plcGirislerButtonActionPerformed
-        // TODO add your handling code here:
         String get = girislerTextArea.getText();
         StringSelection selec= new StringSelection(get);
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -765,7 +903,6 @@ public class AnaEkran extends javax.swing.JFrame {
     }//GEN-LAST:event_plcGirislerButtonActionPerformed
 
     private void plcCikislarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plcCikislarButtonActionPerformed
-        // TODO add your handling code here:
         String get = cikislarTextArea.getText();
         StringSelection selec= new StringSelection(get);
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -773,7 +910,6 @@ public class AnaEkran extends javax.swing.JFrame {
     }//GEN-LAST:event_plcCikislarButtonActionPerformed
 
     private void plcInitmbInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plcInitmbInButtonActionPerformed
-        // TODO add your handling code here:
         String get = initMbGirislerTextArea.getText();
         StringSelection selec= new StringSelection(get);
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -781,7 +917,6 @@ public class AnaEkran extends javax.swing.JFrame {
     }//GEN-LAST:event_plcInitmbInButtonActionPerformed
 
     private void plcInitmbOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plcInitmbOutButtonActionPerformed
-        // TODO add your handling code here:
         String get = initMbCikislarTextArea.getText();
         StringSelection selec= new StringSelection(get);
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -789,7 +924,6 @@ public class AnaEkran extends javax.swing.JFrame {
     }//GEN-LAST:event_plcInitmbOutButtonActionPerformed
 
     private void visuOpcAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visuOpcAllButtonActionPerformed
-        // TODO add your handling code here:
         String get = visuOpcTextArea.getText();
         get = "<MovClipboard>" + get.substring(1,get.length()-2) + "</MovClipboard>\n";
         StringSelection selec= new StringSelection(get);
@@ -798,7 +932,6 @@ public class AnaEkran extends javax.swing.JFrame {
     }//GEN-LAST:event_visuOpcAllButtonActionPerformed
 
     private void visuOpcLineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visuOpcLineButtonActionPerformed
-        // TODO add your handling code here:
         String get = visuOpcTextArea.getText();
         int curPos = visuOpcTextArea.getCaretPosition();
         int endPoint = visuOpcTextArea.getText().indexOf("\n", curPos);
@@ -812,7 +945,6 @@ public class AnaEkran extends javax.swing.JFrame {
     }//GEN-LAST:event_visuOpcLineButtonActionPerformed
 
     private void visuVarAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visuVarAllButtonActionPerformed
-        // TODO add your handling code here:
         String get = visuVarTextArea.getText();
         get = "<MovClipboard>" + get.substring(1,get.length()-2) + "</MovClipboard>\n";
         StringSelection selec= new StringSelection(get);
@@ -821,7 +953,6 @@ public class AnaEkran extends javax.swing.JFrame {
     }//GEN-LAST:event_visuVarAllButtonActionPerformed
 
     private void visuVarLineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visuVarLineButtonActionPerformed
-        // TODO add your handling code here:
         String get = visuVarTextArea.getText();
         int curPos = visuVarTextArea.getCaretPosition();
         int endPoint = visuVarTextArea.getText().indexOf("\n", curPos);
@@ -835,7 +966,6 @@ public class AnaEkran extends javax.swing.JFrame {
     }//GEN-LAST:event_visuVarLineButtonActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
         String get = visuAlTextArea.getText();
         StringSelection selec= new StringSelection(get);
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -843,7 +973,6 @@ public class AnaEkran extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void esaScriptCopyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_esaScriptCopyButtonActionPerformed
-        // TODO add your handling code here:
         String get = esaScriptTextArea.getText();
         StringSelection selec= new StringSelection(get);
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -851,7 +980,6 @@ public class AnaEkran extends javax.swing.JFrame {
     }//GEN-LAST:event_esaScriptCopyButtonActionPerformed
 
     private void esaAlarmScriptCopyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_esaAlarmScriptCopyButtonActionPerformed
-        // TODO add your handling code here:
         String get = esaAlarmScriptTextArea.getText();
         StringSelection selec= new StringSelection(get);
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -859,7 +987,6 @@ public class AnaEkran extends javax.swing.JFrame {
     }//GEN-LAST:event_esaAlarmScriptCopyButtonActionPerformed
 
     private void plcAnalogGlobalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plcAnalogGlobalButtonActionPerformed
-        // TODO add your handling code here:
         String get = plcAnalogGlobalTextArea.getText();
         StringSelection selec= new StringSelection(get);
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -867,7 +994,6 @@ public class AnaEkran extends javax.swing.JFrame {
     }//GEN-LAST:event_plcAnalogGlobalButtonActionPerformed
 
     private void plcAnalogGirislerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plcAnalogGirislerButtonActionPerformed
-        // TODO add your handling code here:
         String get = girislerAnalogTextArea.getText();
         StringSelection selec= new StringSelection(get);
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -875,7 +1001,6 @@ public class AnaEkran extends javax.swing.JFrame {
     }//GEN-LAST:event_plcAnalogGirislerButtonActionPerformed
 
     private void plcAnalogCikislarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plcAnalogCikislarButtonActionPerformed
-        // TODO add your handling code here:
         String get = cikislarAnalogTextArea.getText();
         StringSelection selec= new StringSelection(get);
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -883,7 +1008,6 @@ public class AnaEkran extends javax.swing.JFrame {
     }//GEN-LAST:event_plcAnalogCikislarButtonActionPerformed
 
     private void plcAnalogInitmbInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plcAnalogInitmbInButtonActionPerformed
-        // TODO add your handling code here:
         String get = initAnalogMbGirislerTextArea.getText();
         StringSelection selec= new StringSelection(get);
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -891,12 +1015,58 @@ public class AnaEkran extends javax.swing.JFrame {
     }//GEN-LAST:event_plcAnalogInitmbInButtonActionPerformed
 
     private void plcAnalogInitmbOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plcAnalogInitmbOutButtonActionPerformed
-        // TODO add your handling code here:
         String get = initAnalogMbCikislarTextArea.getText();
         StringSelection selec= new StringSelection(get);
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
         clipboard.setContents(selec, selec);
     }//GEN-LAST:event_plcAnalogInitmbOutButtonActionPerformed
+
+    private void visuAnalogOpcAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visuAnalogOpcAllButtonActionPerformed
+        String get = visuAnalogOpcTextArea.getText();
+        get = "<MovClipboard>" + get.substring(1,get.length()-2) + "</MovClipboard>\n";
+        StringSelection selec= new StringSelection(get);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(selec, selec);
+    }//GEN-LAST:event_visuAnalogOpcAllButtonActionPerformed
+
+    private void visuAnalogOpcLineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visuAnalogOpcLineButtonActionPerformed
+        String get = visuAnalogOpcTextArea.getText();
+        int curPos = visuAnalogOpcTextArea.getCaretPosition();
+        int endPoint = visuAnalogOpcTextArea.getText().indexOf("\n", curPos);
+        int strPoint = visuAnalogOpcTextArea.getText().substring(0, curPos).lastIndexOf("\n");
+        get = get.substring(strPoint+1, endPoint);
+        get = "<MovClipboard>" + get.substring(1,get.length()-2) + "</MovClipboard>\n";
+        StringSelection selec= new StringSelection(get);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(selec, selec);
+    }//GEN-LAST:event_visuAnalogOpcLineButtonActionPerformed
+
+    private void visuAnalogVarAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visuAnalogVarAllButtonActionPerformed
+        String get = visuAnalogVarTextArea.getText();
+        get = "<MovClipboard>" + get.substring(1,get.length()-2) + "</MovClipboard>\n";
+        StringSelection selec= new StringSelection(get);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(selec, selec);
+    }//GEN-LAST:event_visuAnalogVarAllButtonActionPerformed
+
+    private void visuAnalogVarLineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visuAnalogVarLineButtonActionPerformed
+        String get = visuAnalogVarTextArea.getText();
+        int curPos = visuAnalogVarTextArea.getCaretPosition();
+        int endPoint = visuAnalogVarTextArea.getText().indexOf("\n", curPos);
+        int strPoint = visuAnalogVarTextArea.getText().substring(0, curPos).lastIndexOf("\n");
+        get = get.substring(strPoint+1, endPoint);
+        get = "<MovClipboard>" + get.substring(1,get.length()-2) + "</MovClipboard>\n";
+        StringSelection selec= new StringSelection(get);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(selec, selec);
+    }//GEN-LAST:event_visuAnalogVarLineButtonActionPerformed
+
+    private void esaAnalogScriptCopyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_esaAnalogScriptCopyButtonActionPerformed
+        String get = esaAnalogScriptTextArea.getText();
+        StringSelection selec= new StringSelection(get);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(selec, selec);
+    }//GEN-LAST:event_esaAnalogScriptCopyButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -939,6 +1109,8 @@ public class AnaEkran extends javax.swing.JFrame {
     private javax.swing.JButton dosyaSecButton;
     private javax.swing.JButton esaAlarmScriptCopyButton;
     private javax.swing.JTextArea esaAlarmScriptTextArea;
+    private javax.swing.JButton esaAnalogScriptCopyButton;
+    private javax.swing.JTextArea esaAnalogScriptTextArea;
     private javax.swing.JButton esaScriptCopyButton;
     private javax.swing.JTextArea esaScriptTextArea;
     private javax.swing.JTextArea girislerAnalogTextArea;
@@ -952,6 +1124,8 @@ public class AnaEkran extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -966,6 +1140,7 @@ public class AnaEkran extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
@@ -973,6 +1148,9 @@ public class AnaEkran extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
+    private javax.swing.JScrollPane jScrollPane16;
+    private javax.swing.JScrollPane jScrollPane17;
+    private javax.swing.JScrollPane jScrollPane18;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -982,6 +1160,7 @@ public class AnaEkran extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel opcAnalogNameLabel;
     private javax.swing.JLabel opcNameLabel;
     private javax.swing.JButton plcAnalogCikislarButton;
     private javax.swing.JButton plcAnalogGirislerButton;
@@ -998,6 +1177,12 @@ public class AnaEkran extends javax.swing.JFrame {
     private javax.swing.JButton plcInitmbInButton;
     private javax.swing.JButton plcInitmbOutButton;
     private javax.swing.JTextArea visuAlTextArea;
+    private javax.swing.JButton visuAnalogOpcAllButton;
+    private javax.swing.JButton visuAnalogOpcLineButton;
+    private javax.swing.JTextArea visuAnalogOpcTextArea;
+    private javax.swing.JButton visuAnalogVarAllButton;
+    private javax.swing.JButton visuAnalogVarLineButton;
+    private javax.swing.JTextArea visuAnalogVarTextArea;
     private javax.swing.JButton visuOpcAllButton;
     private javax.swing.JButton visuOpcLineButton;
     private javax.swing.JTextArea visuOpcTextArea;
@@ -1144,7 +1329,7 @@ public class AnaEkran extends javax.swing.JFrame {
         if (tagName.equals("YEDEK")) {
         } else {
             esaScriptTextArea.append("\tCase " + modbusOutNr + "\n\t\tnom = \"" + tagName + 
-                    "W\"\n\t\tdesc = \"" + tagComment + "\"\n\n");
+                    "W\"\n\t\tdesc = \"" + tec(tagComment) + "\"\n\n");
         }
         
         modbusOutNr++;
@@ -1240,7 +1425,7 @@ public class AnaEkran extends javax.swing.JFrame {
         if (tagName.equals("YEDEK")   |   tagName.contains("ON_FB")   |   tagName.contains("OFF_FB")) {
         } else {
             esaScriptTextArea.append("\tCase " + modbusInNr + "\n\t\tnom = \"" + tagName + 
-                    "W\"\n\t\tdesc = \"" + tagComment + "\"\n\n");
+                    "W\"\n\t\tdesc = \"" + tec(tagComment) + "\"\n\n");
         }
         
         modbusInNr++;
@@ -1372,6 +1557,15 @@ public class AnaEkran extends javax.swing.JFrame {
             initAnalogMbGirislerTextArea.append("if MODDATA[" + (modbusAnalogInNr+1000) + "] <> MODDATA2[" + 
                     (modbusAnalogInNr+1000) + "] then " + tagName + "_MAN := MODDATA[" + (modbusAnalogInNr+1000) + 
                     "].X0 ; else MODDATA[" + (modbusAnalogInNr+1000) + "].X0 := " + tagName + "_MAN; end_if;\n"); 
+            initAnalogMbGirislerTextArea.append("if (MODDATA[" + (modbusAnalogInNr+500) + "] <> MODDATA2[" + 
+                    (modbusAnalogInNr+500) + "]) or (MODDATA[" + (modbusAnalogInNr+501) + "] <> MODDATA2[" + 
+                    (modbusAnalogInNr+501) + "]) then\n");
+            initAnalogMbGirislerTextArea.append("\t" + tagName + "_YVAL := DWORD_TO_REAL(WORD_TO_DWORD(MODDATA[" + 
+                    (modbusAnalogInNr+501) + "]) + SHL(WORD_TO_DWORD(MODDATA[" + 
+                    (modbusAnalogInNr+500) + "]),16)) / 10.0;\n");
+            initAnalogMbGirislerTextArea.append("else\n\tTEMPDW := REAL_TO_DWORD(" + tagName + 
+                    "_YVAL * 10.0);\n\tMODDATA[" + (modbusAnalogInNr+501) + "] := DWORD_TO_WORD(TEMPDW);\n" + 
+                    "\tMODDATA[" + (modbusAnalogInNr+500) + "] := DWORD_TO_WORD(SHR(TEMPDW,16));\nend_if;\n\n");
         }
         plcAnalogGlobalLabel.setText("Analog Global Değişkenler " + analogTagCount + " Adet");
         
@@ -1390,51 +1584,109 @@ public class AnaEkran extends javax.swing.JFrame {
             girislerAnalogTextArea.append("MODDATA[" + (modbusAnalogInNr+1) + "] := DWORD_TO_WORD(TEMPDW);\n");
             girislerAnalogTextArea.append("MODDATA[" + modbusAnalogInNr + "] := DWORD_TO_WORD(SHR(TEMPDW,16));\n\n\n\n");
         }
-    /*    
+        
         //Visu OPC tag listesi
-        if (tagName.equals("YEDEK")   |   tagName.contains("ON_FB")   |   tagName.contains("OFF_FB")) {
+        if (tagName.equals("YEDEK")) {
         } else {
-            visuOpcTextArea.append("\t\t<OPCItem>\t<ItemID AccessPath=\"\" VTType=\"0\" Variable=\"" + 
-                    tagName + "W\" EnableWrite=\"1\" EnableRead=\"1\" SyncDataStartup=\"0\" SyncWrite=\"1\" ReRead=\"0\">" + 
-                    opcName + "." + tagName + "W</ItemID>\t</OPCItem>\t\t" + "\n");
+            visuAnalogOpcTextArea.append("\t\t<OPCItem>\t<ItemID AccessPath=\"\" VTType=\"0\" Variable=\"" + 
+                    tagName + "\" EnableWrite=\"1\" EnableRead=\"1\" SyncDataStartup=\"0\" SyncWrite=\"1\" ReRead=\"0\">" + 
+                    opcName + "." + tagName + "</ItemID>\t</OPCItem>\t\t" + "\n");
+            visuAnalogOpcTextArea.append("\t\t<OPCItem>\t<ItemID AccessPath=\"\" VTType=\"0\" Variable=\"" + 
+                    tagName + "_MAN\" EnableWrite=\"1\" EnableRead=\"1\" SyncDataStartup=\"0\" SyncWrite=\"1\" ReRead=\"0\">" + 
+                    opcName + "." + tagName + "_MAN</ItemID>\t</OPCItem>\t\t" + "\n");
+            visuAnalogOpcTextArea.append("\t\t<OPCItem>\t<ItemID AccessPath=\"\" VTType=\"0\" Variable=\"" + 
+                    tagName + "_YVAL\" EnableWrite=\"1\" EnableRead=\"1\" SyncDataStartup=\"0\" SyncWrite=\"1\" ReRead=\"0\">" + 
+                    opcName + "." + tagName + "_YVAL</ItemID>\t</OPCItem>\t\t" + "\n");
             
             //Visu Var değişkenleri
-            visuVarTextArea.append("\t\t<Variable(Tag)>	<Name Type=\"4\" AreaType=\"1\" Address=\"0\" Bit=\"0\" Description=\"" + 
+            visuAnalogVarTextArea.append("\t\t<Variable(Tag)>\t<Name Type=\"7\" AreaType=\"1\" Address=\"0\" Bit=\"0\" Description=\"" + 
                     tagIO + " - " + tagComment + 
                     "\" Shared=\"0\" Retentive=\"0\" InitQuality=\"192\">" + tagName + 
-                    "W</Name>\t<EnableTrace DurationDays=\"730\">0</EnableTrace>\t" + 
+                    "</Name>\t<EnableTrace DurationDays=\"730\">0</EnableTrace>\t" + 
+                    "<EnableOPCServer>0</EnableOPCServer>\t<EnableNetworkClient EnableTCPIPServer=\"1\">0</EnableNetworkClient>\t" + 
+                    "<EnableMapRealTimeToDB>0</EnableMapRealTimeToDB>\t" + 
+                    "</Variable(Tag)>\t\t" + "\n");
+            visuAnalogVarTextArea.append("\t\t<Variable(Tag)>\t<Name Type=\"0\" AreaType=\"1\" Address=\"0\" Bit=\"0\" Description=\"" + 
+                    tagComment + 
+                    " manual biti\" Shared=\"0\" Retentive=\"0\" InitQuality=\"192\">" + tagName + 
+                    "_MAN</Name>\t<EnableTrace DurationDays=\"730\">0</EnableTrace>\t" + 
+                    "<EnableOPCServer>0</EnableOPCServer>\t<EnableNetworkClient EnableTCPIPServer=\"1\">0</EnableNetworkClient>\t" + 
+                    "<EnableMapRealTimeToDB>0</EnableMapRealTimeToDB>\t" + 
+                    "</Variable(Tag)>\t\t" + "\n");
+            visuAnalogVarTextArea.append("\t\t<Variable(Tag)>\t<Name Type=\"7\" AreaType=\"1\" Address=\"0\" Bit=\"0\" Description=\"" + 
+                    tagComment + 
+                    " manual değer\" Shared=\"0\" Retentive=\"0\" InitQuality=\"192\">" + tagName + 
+                    "_YVAL</Name>\t<EnableTrace DurationDays=\"730\">0</EnableTrace>\t" + 
                     "<EnableOPCServer>0</EnableOPCServer>\t<EnableNetworkClient EnableTCPIPServer=\"1\">0</EnableNetworkClient>\t" + 
                     "<EnableMapRealTimeToDB>0</EnableMapRealTimeToDB>\t" + 
                     "</Variable(Tag)>\t\t" + "\n");
         }
 
         //ESA tag listesi
-        if (tagName.equals("YEDEK")   |   tagName.contains("ON_FB")   |   tagName.contains("OFF_FB")) {
+        if (tagName.equals("YEDEK")) {
         } else {
-            HSSFRow trow = esaWb.getSheet("Tags").createRow(esaRowNr);
-            trow.createCell(0).setCellValue("");
-            trow.createCell(1).setCellValue(tagName + "W");
-            trow.createCell(2).setCellValue("Device");
-            trow.createCell(3).setCellValue(modbusMasterName);
-            trow.createCell(4).setCellValue("FC 03-16: read/write registers");
-            trow.createCell(5).setCellValue("Address," + Integer.toHexString(modbusInNr));
-            trow.createCell(6).setCellValue("Word");
-            trow.createCell(7).setCellValue("False");
-            trow.createCell(8).setCellValue("Integer");
-            trow.createCell(9).setCellValue("Class_0_5: 500 msec");
-            trow.createCell(10).setCellValue(tagComment);
-            trow.createCell(11).setCellValue(0);
-            trow.createCell(12).setCellValue("");
-            esaRowNr++;
+            HSSFRow tagRow = esaAnalogWb.getSheet("Tags").createRow(esaAnalogRowNr);
+            tagRow.createCell(0).setCellValue("");
+            tagRow.createCell(1).setCellValue(tagName);
+            tagRow.createCell(2).setCellValue("Device");
+            tagRow.createCell(3).setCellValue(modbusMasterName);
+            tagRow.createCell(4).setCellValue("FC 03-16: read/write registers");
+            tagRow.createCell(5).setCellValue("Address," + Integer.toHexString(modbusAnalogInNr));
+            tagRow.createCell(6).setCellValue("Dword");
+            tagRow.createCell(7).setCellValue("Real");
+            tagRow.createCell(8).setCellValue("Class_0_5: 500 msec");
+            tagRow.createCell(9).setCellValue(tagComment);
+            tagRow.createCell(10).setCellValue("Linear");
+            tagRow.createCell(11).setCellValue("0");
+            tagRow.createCell(12).setCellValue("10000");
+            tagRow.createCell(13).setCellValue("0");
+            tagRow.createCell(14).setCellValue("1000");
+            esaAnalogRowNr++;
+            // YVAL tagı
+            tagRow = esaAnalogWb.getSheet("Tags").createRow(esaAnalogRowNr);
+            tagRow.createCell(0).setCellValue("");
+            tagRow.createCell(1).setCellValue(tagName + "_YVAL");
+            tagRow.createCell(2).setCellValue("Device");
+            tagRow.createCell(3).setCellValue(modbusMasterName);
+            tagRow.createCell(4).setCellValue("FC 03-16: read/write registers");
+            tagRow.createCell(5).setCellValue("Address," + Integer.toHexString(modbusAnalogInNr + 500));
+            tagRow.createCell(6).setCellValue("Dword");
+            tagRow.createCell(7).setCellValue("Real");
+            tagRow.createCell(8).setCellValue("Class_0_5: 500 msec");
+            tagRow.createCell(9).setCellValue(tagComment + " manual değer");
+            tagRow.createCell(10).setCellValue("Linear");
+            tagRow.createCell(11).setCellValue("0");
+            tagRow.createCell(12).setCellValue("10000");
+            tagRow.createCell(13).setCellValue("0");
+            tagRow.createCell(14).setCellValue("1000");
+            esaAnalogRowNr++;
+            // MAN tagı
+            tagRow = esaAnalogWb.getSheet("Tags").createRow(esaAnalogRowNr);
+            tagRow.createCell(0).setCellValue("");
+            tagRow.createCell(1).setCellValue(tagName + "_MAN");
+            tagRow.createCell(2).setCellValue("Device");
+            tagRow.createCell(3).setCellValue(modbusMasterName);
+            tagRow.createCell(4).setCellValue("FC 03-16: read/write registers");
+            tagRow.createCell(5).setCellValue("Address," + Integer.toHexString(modbusAnalogInNr + 1000));
+            tagRow.createCell(6).setCellValue("Word");
+            tagRow.createCell(7).setCellValue("Integer");
+            tagRow.createCell(8).setCellValue("Class_0_5: 500 msec");
+            tagRow.createCell(9).setCellValue(tagComment + " manual biti");
+            tagRow.createCell(10).setCellValue("None");
+            tagRow.createCell(11).setCellValue("");
+            tagRow.createCell(12).setCellValue("");
+            tagRow.createCell(13).setCellValue("");
+            tagRow.createCell(14).setCellValue("");
+            esaAnalogRowNr++;
         }
 
         //ESA Scriptler
-        if (tagName.equals("YEDEK")   |   tagName.contains("ON_FB")   |   tagName.contains("OFF_FB")) {
+        if (tagName.equals("YEDEK")) {
         } else {
-            esaScriptTextArea.append("\tCase " + modbusInNr + "\n\t\tnom = \"" + tagName + 
-                    "W\"\n\t\tdesc = \"" + tagComment + "\"\n\n");
+            esaAnalogScriptTextArea.append("\tCase " + modbusAnalogInNr + "\n\t\tnom = \"" + tagName + 
+                    "\"\n\t\tdesc = \"" + tec(tagComment) + "\"\n");
         }
-    */    
+       
         modbusAnalogInNr += 2;
     }
 
@@ -1475,6 +1727,15 @@ public class AnaEkran extends javax.swing.JFrame {
             initAnalogMbCikislarTextArea.append("if MODDATA[" + (modbusAnalogOutNr+1000) + "] <> MODDATA2[" + 
                     (modbusAnalogOutNr+1000) + "] then " + tagName + "_MAN := MODDATA[" + (modbusAnalogOutNr+1000) + 
                     "].X0 ; else MODDATA[" + (modbusAnalogOutNr+1000) + "].X0 := " + tagName + "_MAN; end_if;\n"); 
+            initAnalogMbCikislarTextArea.append("if (MODDATA[" + (modbusAnalogOutNr+500) + "] <> MODDATA2[" + 
+                    (modbusAnalogOutNr+500) + "]) or (MODDATA[" + (modbusAnalogOutNr+501) + "] <> MODDATA2[" + 
+                    (modbusAnalogOutNr+501) + "]) then\n");
+            initAnalogMbCikislarTextArea.append("\t" + tagName + "_YVAL := DWORD_TO_REAL(WORD_TO_DWORD(MODDATA[" + 
+                    (modbusAnalogOutNr+501) + "]) + SHL(WORD_TO_DWORD(MODDATA[" + 
+                    (modbusAnalogOutNr+500) + "]),16)) / 10.0;\n");
+            initAnalogMbCikislarTextArea.append("else\n\tTEMPDW := REAL_TO_DWORD(" + tagName + 
+                    "_YVAL * 10.0);\n\tMODDATA[" + (modbusAnalogOutNr+501) + "] := DWORD_TO_WORD(TEMPDW);\n" + 
+                    "\tMODDATA[" + (modbusAnalogOutNr+500) + "] := DWORD_TO_WORD(SHR(TEMPDW,16));\nend_if;\n\n");
         }
         plcAnalogGlobalLabel.setText("Analog Global Değişkenler " + analogTagCount + " Adet");
         
@@ -1492,6 +1753,108 @@ public class AnaEkran extends javax.swing.JFrame {
             cikislarAnalogTextArea.append("MODDATA[" + (modbusAnalogOutNr+1) + "] := DWORD_TO_WORD(TEMPDW);\n");
             cikislarAnalogTextArea.append("MODDATA[" + modbusAnalogOutNr + "] := DWORD_TO_WORD(SHR(TEMPDW,16));\n\n\n\n");
         }
+        
+        //Visu OPC tag listesi
+        if (tagName.equals("YEDEK")) {
+        } else {
+            visuAnalogOpcTextArea.append("\t\t<OPCItem>\t<ItemID AccessPath=\"\" VTType=\"0\" Variable=\"" + 
+                    tagName + "\" EnableWrite=\"1\" EnableRead=\"1\" SyncDataStartup=\"0\" SyncWrite=\"1\" ReRead=\"0\">" + 
+                    opcName + "." + tagName + "</ItemID>\t</OPCItem>\t\t" + "\n");
+            visuAnalogOpcTextArea.append("\t\t<OPCItem>\t<ItemID AccessPath=\"\" VTType=\"0\" Variable=\"" + 
+                    tagName + "_MAN\" EnableWrite=\"1\" EnableRead=\"1\" SyncDataStartup=\"0\" SyncWrite=\"1\" ReRead=\"0\">" + 
+                    opcName + "." + tagName + "_MAN</ItemID>\t</OPCItem>\t\t" + "\n");
+            visuAnalogOpcTextArea.append("\t\t<OPCItem>\t<ItemID AccessPath=\"\" VTType=\"0\" Variable=\"" + 
+                    tagName + "_YVAL\" EnableWrite=\"1\" EnableRead=\"1\" SyncDataStartup=\"0\" SyncWrite=\"1\" ReRead=\"0\">" + 
+                    opcName + "." + tagName + "_YVAL</ItemID>\t</OPCItem>\t\t" + "\n");
+            
+            //Visu Var değişkenleri
+            visuAnalogVarTextArea.append("\t\t<Variable(Tag)>\t<Name Type=\"7\" AreaType=\"1\" Address=\"0\" Bit=\"0\" Description=\"" + 
+                    tagIO + " - " + tagComment + 
+                    "\" Shared=\"0\" Retentive=\"0\" InitQuality=\"192\">" + tagName + 
+                    "</Name>\t<EnableTrace DurationDays=\"730\">0</EnableTrace>\t" + 
+                    "<EnableOPCServer>0</EnableOPCServer>\t<EnableNetworkClient EnableTCPIPServer=\"1\">0</EnableNetworkClient>\t" + 
+                    "<EnableMapRealTimeToDB>0</EnableMapRealTimeToDB>\t" + 
+                    "</Variable(Tag)>\t\t" + "\n");
+            visuAnalogVarTextArea.append("\t\t<Variable(Tag)>\t<Name Type=\"0\" AreaType=\"1\" Address=\"0\" Bit=\"0\" Description=\"" + 
+                    tagComment + 
+                    " manual biti\" Shared=\"0\" Retentive=\"0\" InitQuality=\"192\">" + tagName + 
+                    "_MAN</Name>\t<EnableTrace DurationDays=\"730\">0</EnableTrace>\t" + 
+                    "<EnableOPCServer>0</EnableOPCServer>\t<EnableNetworkClient EnableTCPIPServer=\"1\">0</EnableNetworkClient>\t" + 
+                    "<EnableMapRealTimeToDB>0</EnableMapRealTimeToDB>\t" + 
+                    "</Variable(Tag)>\t\t" + "\n");
+            visuAnalogVarTextArea.append("\t\t<Variable(Tag)>\t<Name Type=\"7\" AreaType=\"1\" Address=\"0\" Bit=\"0\" Description=\"" + 
+                    tagComment + 
+                    " manual değer\" Shared=\"0\" Retentive=\"0\" InitQuality=\"192\">" + tagName + 
+                    "_YVAL</Name>\t<EnableTrace DurationDays=\"730\">0</EnableTrace>\t" + 
+                    "<EnableOPCServer>0</EnableOPCServer>\t<EnableNetworkClient EnableTCPIPServer=\"1\">0</EnableNetworkClient>\t" + 
+                    "<EnableMapRealTimeToDB>0</EnableMapRealTimeToDB>\t" + 
+                    "</Variable(Tag)>\t\t" + "\n");
+        }
+
+        //ESA tag listesi
+        if (tagName.equals("YEDEK")) {
+        } else {
+            HSSFRow tagRow = esaAnalogWb.getSheet("Tags").createRow(esaAnalogRowNr);
+            tagRow.createCell(0).setCellValue("");
+            tagRow.createCell(1).setCellValue(tagName);
+            tagRow.createCell(2).setCellValue("Device");
+            tagRow.createCell(3).setCellValue(modbusMasterName);
+            tagRow.createCell(4).setCellValue("FC 03-16: read/write registers");
+            tagRow.createCell(5).setCellValue("Address," + Integer.toHexString(modbusAnalogOutNr));
+            tagRow.createCell(6).setCellValue("Dword");
+            tagRow.createCell(7).setCellValue("Real");
+            tagRow.createCell(8).setCellValue("Class_0_5: 500 msec");
+            tagRow.createCell(9).setCellValue(tagComment);
+            tagRow.createCell(10).setCellValue("Linear");
+            tagRow.createCell(11).setCellValue("0");
+            tagRow.createCell(12).setCellValue("10000");
+            tagRow.createCell(13).setCellValue("0");
+            tagRow.createCell(14).setCellValue("1000");
+            esaAnalogRowNr++;
+            // YVAL tagı
+            tagRow = esaAnalogWb.getSheet("Tags").createRow(esaAnalogRowNr);
+            tagRow.createCell(0).setCellValue("");
+            tagRow.createCell(1).setCellValue(tagName + "_YVAL");
+            tagRow.createCell(2).setCellValue("Device");
+            tagRow.createCell(3).setCellValue(modbusMasterName);
+            tagRow.createCell(4).setCellValue("FC 03-16: read/write registers");
+            tagRow.createCell(5).setCellValue("Address," + Integer.toHexString(modbusAnalogOutNr + 500));
+            tagRow.createCell(6).setCellValue("Dword");
+            tagRow.createCell(7).setCellValue("Real");
+            tagRow.createCell(8).setCellValue("Class_0_5: 500 msec");
+            tagRow.createCell(9).setCellValue(tagComment + " manual değer");
+            tagRow.createCell(10).setCellValue("Linear");
+            tagRow.createCell(11).setCellValue("0");
+            tagRow.createCell(12).setCellValue("10000");
+            tagRow.createCell(13).setCellValue("0");
+            tagRow.createCell(14).setCellValue("1000");
+            esaAnalogRowNr++;
+            // MAN tagı
+            tagRow = esaAnalogWb.getSheet("Tags").createRow(esaAnalogRowNr);
+            tagRow.createCell(0).setCellValue("");
+            tagRow.createCell(1).setCellValue(tagName + "_MAN");
+            tagRow.createCell(2).setCellValue("Device");
+            tagRow.createCell(3).setCellValue(modbusMasterName);
+            tagRow.createCell(4).setCellValue("FC 03-16: read/write registers");
+            tagRow.createCell(5).setCellValue("Address," + Integer.toHexString(modbusAnalogOutNr + 1000));
+            tagRow.createCell(6).setCellValue("Word");
+            tagRow.createCell(7).setCellValue("Integer");
+            tagRow.createCell(8).setCellValue("Class_0_5: 500 msec");
+            tagRow.createCell(9).setCellValue(tagComment + " manual biti");
+            tagRow.createCell(10).setCellValue("None");
+            tagRow.createCell(11).setCellValue("");
+            tagRow.createCell(12).setCellValue("");
+            tagRow.createCell(13).setCellValue("");
+            tagRow.createCell(14).setCellValue("");
+            esaAnalogRowNr++;
+        }
+
+        //ESA Scriptler
+        if (tagName.equals("YEDEK")) {
+        } else {
+            esaAnalogScriptTextArea.append("\tCase " + modbusAnalogOutNr + "\n\t\tnom = \"" + tagName + 
+                    "\"\n\t\tdesc = \"" + tec(tagComment) + "\"\n");
+        }
 
         modbusAnalogOutNr += 2;
     }
@@ -1501,6 +1864,31 @@ public class AnaEkran extends javax.swing.JFrame {
         return(tagComment.replace("ç", "c").replace("Ç", "C").replace("ğ", "g").
                 replace("Ğ", "G").replace("ı", "i").replace("İ", "I").replace("ö", "o").
                 replace("Ö", "O").replace("ş", "s").replace("Ş", "S").replace("ü", "u").replace("Ü", "U"));
+    }
+
+    private void fillEsaAnalogWb() {
+        esaAnalogWb.createSheet("Tags");
+        esaAnalogWb.getSheet("Tags").createRow(0).createCell(0).setCellValue("ESAPOLYMATH");
+        esaAnalogWb.getSheet("Tags").createRow(2).createCell(0).setCellValue(0);
+        for (int i = 9; i < 11; i++){
+            HSSFRow row = esaAnalogWb.getSheet("Tags").createRow(i);
+            row.createCell(0).setCellValue("Folder Name");
+            row.createCell(1).setCellValue("Name");
+            row.createCell(2).setCellValue("TypeOfAddress");
+            row.createCell(3).setCellValue("Device");
+            row.createCell(4).setCellValue("Memory address");
+            row.createCell(5).setCellValue("Address");
+            row.createCell(6).setCellValue("Data area type");
+            row.createCell(7).setCellValue("Type");
+            row.createCell(8).setCellValue("Group");
+            row.createCell(9).setCellValue("Comment");
+            row.createCell(10).setCellValue("Conversion");
+            row.createCell(11).setCellValue("X1ConversionValue");
+            row.createCell(12).setCellValue("X2ConversionValue");
+            row.createCell(13).setCellValue("Y1ConversionValue");
+            row.createCell(14).setCellValue("Y2ConversionValue");
+        }
+        esaAnalogRowNr = 11;
     }
 
 }
